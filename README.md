@@ -72,5 +72,7 @@ However, if the `parameters are objects (instances of classes)`, they `need to b
 > * Distributed garbage collection.
 > * Minimize the difference between working with local and remote objects.
 
+# Reference
+https://www.tutorialspoint.com/java_rmi/java_rmi_introduction.htm
 
 
