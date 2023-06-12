@@ -33,25 +33,25 @@ we write two program **server program** (jun server ma basxa) and **client progr
 > * The `result` is `passed` all the way back `to the client`.
 
 # Marshalling and Unmarshalling
-> When a client wants to invoke a method on a remote object, the parameters for that method need to be sent over the network to the server where the object resides. However, the parameters cannot be directly sent as they are because they exist in the client's memory and the server cannot access that memory directly.
+> When a `client` wants to `invoke` a `method on a remote object`, the `parameters for that method need to be sent over the network to the server where the object resides`. However, the `parameters cannot be directly sent` as they are because `they exist in the client's memory` and `the server cannot access that memory directly.`
 
-> To overcome this, the parameters are bundled together into a message. If the parameters are of primitive types (e.g., integers, booleans), they can be put together as-is, and a header is attached to indicate the type and order of the parameters.
-However, if the parameters are objects (instances of classes), they need to be serialized before sending them over the network. Serialization is the process of converting an object into a format that can be easily transmitted or stored. During serialization, the object's state is converted into a byte stream that represents the object's data and structure.
+> To overcome this, the `parameters are bundled together into a message.` If the `parameters are of primitive types (e.g., integers, booleans)`, they `can be put together as-is`, and a `header is attached to indicate the type and order of the parameters.`
+However, if the `parameters are objects (instances of classes)`, they `need to be serialized before sending them over the network`. Serialization is the `process of converting an object into a format that can be easily transmitted or stored.` During serialization, the `object's state is converted into a byte stream that represents the object's data and structure`.
 
 
 > The serialized objects, along with the headers for primitive parameters, are then sent over the network to the server.
 
 
-> At the server side, the packed parameters are received and need to be reconstructed into their original form so that the method can be invoked with the correct arguments. This process is known as unmarshalling.
+> At the server side, the `packed parameters are received` and `need to be reconstructed into their original form`so that the method can be invoked with the correct arguments. This process is known as unmarshalling.
 
 
-> Unmarshalling involves extracting the headers for primitive parameters and interpreting them to determine the type and order of the parameters. For objects, the serialized byte stream is deserialized, meaning it is converted back into an object with its original state and structure.
+> Unmarshalling involves `extracting the headers for primitive parameters and interpreting them to determine the type and order of the parameters.` For objects, the serialized byte stream is deserialized, meaning it is converted back into an object with its original state and structure.
 
 
 > Once the parameters have been unmarshalled, the server can then invoke the required method on the remote object using the extracted parameters.
 
 
-> In summary, marshalling is the process of packaging and, if necessary, serializing parameters into a format suitable for transmission over the network. Unmarshalling is the reverse process of extracting and reconstructing the parameters at the receiving end before invoking the desired method. These processes allow for communication between clients and servers in remote method invocation scenarios.
+> In summary, `marshalling is the process of packaging and, if necessary, serializing parameters into a format suitable for transmission over the network.` `Unmarshalling is the reverse process of extracting and reconstructing the parameters at the receiving end before invoking the desired method.` These processes allow for communication between clients and servers in remote method invocation scenarios.
 
 
 
