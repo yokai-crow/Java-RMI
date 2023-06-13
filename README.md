@@ -1,4 +1,4 @@
-# Java-RMI
+# Java-RMI Introduction
 RMI Notes
 
 #### Java RMI Note
@@ -72,7 +72,56 @@ However, if the `parameters are objects (instances of classes)`, they `need to b
 > * Distributed garbage collection.
 > * Minimize the difference between working with local and remote objects.
 
+
+# Java RMI Application
+For creating RMI Application i need to follow the procedure below:
+### Define the remote interface
+> A remote interface provides the description of all the methods of a particular remote object. The client communicates with this remote interface.
+
+> To create a remote interface −
+> * Create an interface that extends the predefined interface Remote which belongs to the package.
+> * Declare all the business methods that can be invoked by the client in this interface.
+> Since there is a chance of network issues during remote calls, an exception named RemoteException may occur; throw it.
+
+### Develop the implementation class (remote object)
+> We need to implement the remote interface created in the earlier step. (We can write an implementation class separately or we can directly make the server program implement this interface.)
+
+> To develop an implementation class −
+> * Implement the interface created in the previous step.
+> * Provide implementation to all the abstract methods of the remote interface.
+
+### Develop the server program
+> An RMI server program should implement the remote interface or extend the implementation class. Here, we should create a remote object and bind it to the RMIregistry.
+
+> To develop a server program −
+> * Create a client class from where you want invoke the remote object.
+> * Create a remote object by instantiating the implementation class as shown below.
+> * Export the remote object using the method exportObject() of the class named UnicastRemoteObject which belongs to the package java.rmi.server.
+> * Get the RMI registry using the getRegistry() method of the LocateRegistry class which belongs to the package java.rmi.registry.
+> * Bind the remote object created to the registry using the bind() method of the class named Registry. To this method, pass a string representing the bind name and the object exported, as parameters.
+
+### Develop the client program
+> Write a client program in it, fetch the remote object and invoke the required method using this object.
+
+> To develop a client program −
+> * Create a client class from where your intended to invoke the remote object.
+> * Get the RMI registry using the getRegistry() method of the LocateRegistry class which belongs to the package java.rmi.registry.
+> * Fetch the object from the registry using the method lookup() of the class Registry which belongs to the package java.rmi.registry.
+> * To this method, you need to pass a string value representing the bind name as a parameter. This will return you the remote object.
+> * The lookup() returns an object of type remote, down cast it to the type Hello.
+> * Finally invoke the required method using the obtained remote object.
+
+### Compile the application
+> To compile the application −
+> * Compile the Remote interface.
+> * Compile the implementation class.
+> * Compile the server program.
+> * Compile the client program.
+
+### Execute the application
+> * start rmiregistery
+> * java server (server program that we created)
+> * java client (client program that we created)
+
 # Reference
 https://www.tutorialspoint.com/java_rmi/java_rmi_introduction.htm
-
-
